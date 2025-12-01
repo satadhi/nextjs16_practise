@@ -29,3 +29,13 @@ It won’t look at anything below `app/` like `routes/` or `components/`.
 > Next.js builds the layout chain **based on folder hierarchy inside `app/`**, not by keyword names like "root".
 
 You understood it well — the layouts are **collected up the folder tree**, not searched outside or in sibling folders.
+
+### For error.tsx
+
+This works opposite to how layout works.It wil take the nearest `error.tsx` to the route where the error occured 
+
+### serverComponenetHMRCache
+
+
+1. server side fetching automatically handles fetch deduplication handling
+2. Reduce network water fall
