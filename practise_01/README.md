@@ -37,5 +37,18 @@ This works opposite to how layout works.It wil take the nearest `error.tsx` to t
 ### serverComponenetHMRCache
 
 
-1. server side fetching automatically handles fetch deduplication handling
+1. **Automatic request deduplication** server side fetching automatically handles fetch deduplication handling
 2. Reduce network water fall
+
+
+### Caching 
+
+In nextjs there is 3 ways  caching happens 
+
+1. Browser cache : saves static files locally
+2. Server Cache : Stores pre-rendered pages and API responses
+3. Data Cache : Remembers fetched data to avoid repeat requests 
+
+## Use cache
+
+`'use cache'` can be a server level component or a method look more into it please 

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const Home = async () => {
-    const response = await fetch('http://localhost:3001/api/users');
+    const response = await fetch('http://localhost:3000/api/users');
     if (!response.ok) {
         throw new Error('Failed to fetch data');
     }
