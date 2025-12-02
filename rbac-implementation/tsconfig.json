@@ -1,7 +1,12 @@
 {
   "files": [],
   "compilerOptions": {
-    "composite": true
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+       "@rbac/shared": ["packages/shared/src"]
+
+    }
   },
   "references": [
     { "path": "./apps/backend" },
