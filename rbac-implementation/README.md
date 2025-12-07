@@ -139,12 +139,3 @@ This repo showcases how **modern monorepos** allow clean code-sharing across bac
 RBAC rules are maintained in a single shared package, ensuring consistency and reducing bugs.
 
 ---
-
-If you want, I can also generate:
-
-✅ Folder-by-folder explanation
-✅ Architecture diagram
-✅ Example API routes showing RBAC
-✅ UI demo components for showcasing permissions
-
-Just tell me!
