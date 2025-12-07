@@ -6,8 +6,11 @@
   "private": true,
   "scripts": {
   "dev": "turbo run dev --parallel"
-}
-,
+},
+  "packages": [
+    "apps/*",
+    "packages/*"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

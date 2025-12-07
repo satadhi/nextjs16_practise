@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "composite": true,
+        "lib": ["ES2017", "DOM"],
     "paths": {
        "@rbac/shared": ["packages/shared/src"]
 
