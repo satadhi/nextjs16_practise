@@ -26,11 +26,8 @@ export default function Home() {
     } else {
       setMessage("User created successfully");
     }
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify(Object.fromEntries(formData.entries()))
-    );
+    console.log(result.data);
+    localStorage.setItem("user", JSON.stringify(result.data));
   }
 
   return (

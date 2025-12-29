@@ -20,7 +20,15 @@ export async function createUser(formData: FormData) {
     return { error: "Email already exists" };
   }
 
-  await User.create({ userName, email, role });
-
-  return { success: true };
+  const user = (await User.create({ userName, email, role })).toObject();
+  return {
+    success: true,
+    data: {
+      userName: user.userName,
+      role: user.role,
+      email: user.email,
+      associatedBoards: user.associatedBoards,
+      _id: user._id,
+    },
+  };
 }
