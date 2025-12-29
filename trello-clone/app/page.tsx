@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { createUser } from "./actions/createUser";
 import { USER_ROLES } from "@/type";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -17,6 +16,10 @@ export default function Home() {
     } else {
       setMessage("User created successfully");
     }
+    localStorage.setItem(
+      "user",
+      JSON.stringify(Object.fromEntries(formData.entries()))
+    );
   }
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">

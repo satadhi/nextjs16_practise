@@ -18,6 +18,12 @@ const UserSchema = new Schema(
       trim: true,
       unique: true,
     },
+    associatedBoards: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Board",
+      },
+    ],
   },
   {
     timestamps: true,
