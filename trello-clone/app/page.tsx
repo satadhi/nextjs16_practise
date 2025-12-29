@@ -3,7 +3,17 @@
 import { useState } from "react";
 import { createUser } from "./actions/createUser";
 import { USER_ROLES } from "@/type";
+
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   const [message, setMessage] = useState<string | null>(null);
@@ -16,48 +26,65 @@ export default function Home() {
     } else {
       setMessage("User created successfully");
     }
+
     localStorage.setItem(
       "user",
       JSON.stringify(Object.fromEntries(formData.entries()))
     );
   }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div className="text-5xl"> Welcome to Trello Clone</div>
-        <form action={handleSubmit} className="space-y-4">
-          <input
-            name="username"
-            placeholder="Username"
-            className="w-full border p-2 rounded"
-          />
+    <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-black">
+      <Card className="w-full max-w-md shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-2xl text-center">
+            Welcome to Trello Clone
+          </CardTitle>
+        </CardHeader>
 
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="w-full border p-2 rounded"
-          />
+        <CardContent>
+          <form action={handleSubmit} className="space-y-4">
+            <Input name="username" placeholder="Username" required />
 
-          <select
-            name="role"
-            defaultValue="MEMBER"
-            className="w-full border p-2 rounded"
-          >
-            {USER_ROLES.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))}
-          </select>
+            <Input name="email" type="email" placeholder="Email" required />
 
-          <Button type="submit" variant="outline">
-            Enter User
-          </Button>
-        </form>
+            {/* shadcn Select DOES NOT auto-submit value → use hidden input */}
+            <input type="hidden" name="role" id="role-input" />
 
-        {message && <p className="mt-4 text-center text-sm">{message}</p>}
-      </main>
+            <Select
+              defaultValue="MEMBER"
+              onValueChange={(value: string) => {
+                const input = document.getElementById(
+                  "role-input"
+                ) as HTMLInputElement;
+                input.value = value;
+              }}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select role" />
+              </SelectTrigger>
+
+              <SelectContent>
+                {USER_ROLES.map((role) => (
+                  <SelectItem key={role} value={role}>
+                    {role}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Button type="submit" className="w-full">
+              Enter User
+            </Button>
+          </form>
+
+          {message && (
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              {message}
+            </p>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
