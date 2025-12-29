@@ -8,10 +8,10 @@ let cached = global.mongoose;
 
 if (!cached) cached = global.mongoose = { conn: null };
 
-export const connectMongo = async () => {
+export default async function connectMongo() {
   if (cached.conn) return cached.conn;
 
-  cached.conn = await mongoose.connect(MONGO_URI);
+  cached.conn = await mongoose.connect(MONGO_URI as string);
 
   return cached.conn;
-};
+}
