@@ -26,6 +26,11 @@ export default function TopBar() {
     if (storedUser) {
       setUserId(JSON.parse(storedUser)._id);
     }
+
+    const boardDetail = localStorage.getItem("boardDetail");
+    if (boardDetail) {
+      setBoardName(JSON.parse(boardDetail).boardName);
+    }
   }, []);
 
   async function handleCreateBoard() {
@@ -38,8 +43,6 @@ export default function TopBar() {
         "boardDetail",
         JSON.stringify({ boardId, boardName })
       );
-
-      setBoardName("");
       setOpen(false);
     } finally {
       setLoading(false);
@@ -53,7 +56,7 @@ export default function TopBar() {
         <div className="flex items-center gap-3">
           <span className="font-bold text-sm">Board Name :</span>
           <span className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-            Over2
+            {boardName}
           </span>
         </div>
 

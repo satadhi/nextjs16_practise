@@ -26,7 +26,7 @@ export default async function createBoardForUser(
       $push: { associatedBoards: board._id },
     });
 
-    return { success: true, boardId: board._id };
+    return { success: true, boardId: board._id.toString() };
   } catch (error) {
     console.error(error);
     throw new Error("Internal Error Unable to create board");
