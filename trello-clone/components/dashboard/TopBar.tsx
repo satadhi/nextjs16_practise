@@ -46,20 +46,27 @@ export default function TopBar() {
       <header className="flex items-center justify-between px-6 h-14 border-b bg-white dark:bg-zinc-900">
         {/* Left */}
         <div className="flex items-center gap-3">
-          <Avatar>
-            <AvatarFallback>SH</AvatarFallback>
-          </Avatar>
-          <span className="font-semibold text-sm">Satadhi Halder</span>
+          <span className="font-bold text-sm">Board Name :</span>
+          <span className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
+            Over2
+          </span>
         </div>
 
         {/* Middle */}
-        <Input placeholder="Search boards..." className="max-w-sm" />
+        <Input placeholder="Search boards..." className="max-w-md" />
 
         {/* Right */}
         <Button onClick={() => setOpen(true)}>
           <Plus className="h-4 w-4 mr-2" />
           Add Board
         </Button>
+
+        <div className="flex items-center gap-3">
+          <Avatar>
+            <AvatarFallback>SH</AvatarFallback>
+          </Avatar>
+          <span className="font-semibold text-sm">Satadhi Halder</span>
+        </div>
       </header>
 
       {/* ✅ Modal */}
