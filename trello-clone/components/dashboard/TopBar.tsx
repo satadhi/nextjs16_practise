@@ -33,7 +33,12 @@ export default function TopBar() {
 
     setLoading(true);
     try {
-      await createBoardForUser(userId, boardName);
+      const { boardId } = await createBoardForUser(userId, boardName);
+      localStorage.setItem(
+        "boardDetail",
+        JSON.stringify({ boardId, boardName })
+      );
+
       setBoardName("");
       setOpen(false);
     } finally {
